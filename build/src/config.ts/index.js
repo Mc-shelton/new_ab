@@ -36,12 +36,6 @@ const appMap = () => {
             MAIL_USER: (0, config_1.default)("MAIL_USER"),
             MAIL_PASS: (0, config_1.default)('MAIL_PASS'),
             TEMPLATE_SRC: (0, config_1.default)('TEMPLATE_SRC')
-        },
-        google: {
-            CLIENT_SECRET: (0, config_1.default)("CLIENT_SECRET"),
-            CLIENT_ID: (0, config_1.default)("CLIENT_ID"),
-            SSO_REDIRECT: (0, config_1.default)("SSO_REDIRECT"),
-            SSO_REDIRECT_FE: (0, config_1.default)("SSO_REDIRECT_FE")
         }
     });
 };

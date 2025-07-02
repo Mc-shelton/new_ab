@@ -34,12 +34,6 @@ const appMap = () => {
                 MAIL_USER: config("MAIL_USER"),
                 MAIL_PASS: config('MAIL_PASS'),
                 TEMPLATE_SRC: config('TEMPLATE_SRC')
-            },
-            google: {
-                CLIENT_SECRET: config("CLIENT_SECRET"),
-                CLIENT_ID: config("CLIENT_ID"),
-                SSO_REDIRECT: config("SSO_REDIRECT"),
-                SSO_REDIRECT_FE: config("SSO_REDIRECT_FE")
             }
         })
 }

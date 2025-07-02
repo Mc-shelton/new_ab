@@ -52,13 +52,13 @@ const getOAuth = async (req: Request, resp: Response) => {
         const s = JSON.stringify(finUser)
         console.log(finUser)
 
-        resp.redirect(302, appConfig.google.SSO_REDIRECT_FE + '?user=' + s)
+        resp.redirect(302, 'appConfig.google.SSO_REDIRECT_FE' + '?user=' + s)
     } catch (err: any) {
         console.log('error with google ', err)
         const error = customErrorChecker(err)
         let errMessage = 'internal server error, try again'
         if (error) errMessage = err.message
-        resp.redirect(302, appConfig.google.SSO_REDIRECT_FE + '?error=' + errMessage)
+        resp.redirect(302, 'appConfig.google.SSO_REDIRECT_FE' + '?error=' + errMessage)
     }
 }
 export {

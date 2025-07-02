@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getOAuth = exports.postOuath = void 0;
-const config_ts_1 = __importDefault(require("../../config.ts"));
 const ssoclient_auth_1 = __importDefault(require("../../services_layer/auth/ssoclient.auth"));
 const auth_1 = __importDefault(require("../../services_layer/auth/auth"));
 const userErrors_1 = __importDefault(require("../errors/userErrors"));
@@ -61,7 +60,7 @@ const getOAuth = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(finUser);
         const s = JSON.stringify(finUser);
         console.log(finUser);
-        resp.redirect(302, config_ts_1.default.google.SSO_REDIRECT_FE + '?user=' + s);
+        resp.redirect(302, 'appConfig.google.SSO_REDIRECT_FE' + '?user=' + s);
     }
     catch (err) {
         console.log('error with google ', err);
@@ -69,7 +68,7 @@ const getOAuth = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
         let errMessage = 'internal server error, try again';
         if (error)
             errMessage = err.message;
-        resp.redirect(302, config_ts_1.default.google.SSO_REDIRECT_FE + '?error=' + errMessage);
+        resp.redirect(302, 'appConfig.google.SSO_REDIRECT_FE' + '?error=' + errMessage);
     }
 });
 exports.getOAuth = getOAuth;
