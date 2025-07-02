@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const controllers_1 = require("../handlers/controllers");
+const periodicalRouter = (0, express_1.Router)();
+periodicalRouter.post("/", controllers_1.periodicalController.createPeriodicals);
+periodicalRouter.get("/", controllers_1.periodicalController.getPeriodicals);
+periodicalRouter.get("/sermons", controllers_1.periodicalController.getSermons);
+periodicalRouter.get("/books", controllers_1.periodicalController.getBooks);
+periodicalRouter.get("/articles", controllers_1.periodicalController.getArticles);
+exports.default = periodicalRouter;

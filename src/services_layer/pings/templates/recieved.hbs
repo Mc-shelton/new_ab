@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+        .header {
+            background-color: #2e2e2e;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 4px 4px 0 0;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 12px;
+            color: #777777;
+            border-top: 1px solid #dddddd;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Order Received</h1>
+        </div>
+        <div class="content">
+            <p>Dear {{customer_name}},</p>
+            <p>We are pleased to inform you that your recent order <span class="highlight">{{invoice_id}}</span> placed on <span class="highlight">{{created_at}}</span> has been received.</p>
+            <p>You will receive an email invoice shortly. Once your order has been processed, we will notify you again.</p>
+            <p>If you have any questions or need further assistance, please do not hesitate to contact our customer support team at <a href="mailto:sales@adventband.org" target="_blank">sales@adventband.org</a> or <a href="mailto:support@adventband.org">support@adventband.org</a>.</p>
+            <p>For quick assistance, you can also contact us on WhatsApp:</p>
+            <a href="https://wa.me/254741741381" target="_blank" class="button">Contact Us on WhatsApp</a>
+            <p>Thank you for shopping with us!</p>
+            <p>Sincerely,<br>Advent Band</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Advent Band. All rights reserved.</p>
+            <a href="https://adventband.org" target="_blank">Adventist Heritage Community</a>
+        </div>
+    </div>
+</body>
+</html>

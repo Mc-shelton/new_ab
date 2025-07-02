@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.periodicalsRepository = exports.eventsRepository = exports.shopsRepository = exports.roomsRepository = exports.userRepository = void 0;
+const tsyringe_1 = require("tsyringe");
+const users_repo_1 = __importDefault(require("./users.repo"));
+const prisma_1 = require("../../prisma");
+const events_repo_1 = __importDefault(require("./events.repo"));
+const periodicles_repo_1 = __importDefault(require("./periodicles.repo"));
+const shops_repo_1 = __importDefault(require("./shops.repo"));
+const rooms_repol_1 = __importDefault(require("./rooms.repol"));
+const prismaContainer = tsyringe_1.container.register('prisma', { useValue: prisma_1.prismaClient });
+const userRepository = prismaContainer.resolve(users_repo_1.default);
+exports.userRepository = userRepository;
+const eventsRepository = prismaContainer.resolve(events_repo_1.default);
+exports.eventsRepository = eventsRepository;
+const periodicalsRepository = prismaContainer.resolve(periodicles_repo_1.default);
+exports.periodicalsRepository = periodicalsRepository;
+const shopsRepository = prismaContainer.resolve(shops_repo_1.default);
+exports.shopsRepository = shopsRepository;
+const roomsRepository = prismaContainer.resolve(rooms_repol_1.default);
+exports.roomsRepository = roomsRepository;

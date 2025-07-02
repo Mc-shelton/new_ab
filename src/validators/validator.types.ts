@@ -1,0 +1,7 @@
+interface IuserValidator {
+
+}
+
+export {
+    IuserValidator
+}

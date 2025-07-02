@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const controllers_1 = require("../handlers/controllers");
+const estateRoute = (0, express_1.Router)();
+estateRoute.get('/', controllers_1.estateController.getLessons);
+estateRoute.get('/quarterlies', controllers_1.estateController.getLessons);
+estateRoute.get('/quarterlies/books', controllers_1.estateController.getQuarterliesBooks);
+estateRoute.get('/egw', controllers_1.estateController.getEgwEstate);
+estateRoute.get('/egw/folder', controllers_1.estateController.getEgwFolder);
+estateRoute.get('/pioneers', controllers_1.estateController.getPioneer);
+estateRoute.get('/pioneers/estate', controllers_1.estateController.getPioneerEstate);
+estateRoute.get('/egw/content', controllers_1.estateController.getEgwContent);
+exports.default = estateRoute;
