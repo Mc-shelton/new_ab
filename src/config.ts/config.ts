@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
-process.env.NODE_ENV == 'production'? dotenv.config({path:'.env'}) : dotenv.config({path:'.env.development'})
+dotenv.config()
+// process.env.RAILWAY_ENVIRONMENT == 'production'? dotenv.config({path:'.env'}) : dotenv.config({path:'.env.development'})
 console.log(process.env)
 
 
