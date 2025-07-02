@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 process.env.NODE_ENV == 'production'? dotenv.config({path:'.env'}) : dotenv.config({path:'.env.development'})
-console.log(process.env.NODE_ENV)
+console.log(process.env)
 
 
 const config = (envString:string):string=>{
