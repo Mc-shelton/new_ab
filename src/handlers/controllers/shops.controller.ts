@@ -25,6 +25,7 @@ const createOrder = async (req: IRequest, res: Response) => {
     const nOrder = await shopsService.createOrder(order, order_items, user.id);
     res.status(200).json({ message: "order created", data: nOrder });
   } catch (err: any) {
+    console.log(err)
     const error = customErrorChecker(err);
     if (error) return res.status(400).json({ message: err.message });
     res.status(500).json({ message: errorEnums["SERVER"] });
@@ -50,6 +51,19 @@ const getItems = async (req: IRequest, res: Response) => {
   try {
     const items = await shopsService.getItems()
     res.status(200).json({ message: "shop items", data: items });
+  } catch (err: any) {
+    const error = customErrorChecker(err);
+    if (error) return res.status(400).json({ message: err.message });
+    res.status(500).json({ message: errorEnums["SERVER"] });
+    logger.genError(err.message);
+  }
+};
+
+const getItemThumbNails = async (req: IRequest, res: Response) => {
+  const {item_id} = req.query
+  try {
+    const items_nails = await shopsService.getItemThumbNails(item_id as string)
+    res.status(200).json({ message: "item thumbnails", data: items_nails });
   } catch (err: any) {
     const error = customErrorChecker(err);
     if (error) return res.status(400).json({ message: err.message });
@@ -95,5 +109,6 @@ export {
   createItem,
   getItems,
   getUserOrder,
-  changeOrderStatus
+  changeOrderStatus,
+  getItemThumbNails
 }

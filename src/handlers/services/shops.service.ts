@@ -16,8 +16,13 @@ class ShopsService implements Ishops {
     @inject("userRepo") private readonly userRepo: IuserInterface
   ) {}
   async createItem(item: items, thumb_nails: thumb_nails[]): Promise<items> {
+    let newItem =  await this.shopsRepo.createItem(item);
+    thumb_nails = thumb_nails.map(l=>{
+      l.item_id = newItem.id
+      return l
+    })
     await this.shopsRepo.createItemThumbNails(thumb_nails);
-    return await this.shopsRepo.createItem(item);
+    return newItem
   }
 
   async getItems(): Promise<items[]> {
@@ -80,6 +85,9 @@ class ShopsService implements Ishops {
   }
   async changeOrderStatus(orderId: string, status: orderItemStatus): Promise<orders | null> {
       return await this.shopsRepo.changeOrderStatus(orderId, status)
+  }
+  async getItemThumbNails(item_id: string): Promise<thumb_nails[]> {
+    return await this.shopsRepo.getItemThumbNails(item_id)
   }
 }
 

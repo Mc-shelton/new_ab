@@ -5,6 +5,7 @@ const shopsRouter = Router()
 shopsRouter.post('/items', shopsController.createItem)
 shopsRouter.post("/orders", shopsController.createOrder)
 shopsRouter.get("/items", shopsController.getItems)
+shopsRouter.get('/items/thumb_nails', shopsController.getItemThumbNails)
 shopsRouter.get("/orders", shopsController.getUserOrder)
 shopsRouter.put("/orders", shopsController.changeOrderStatus)
 

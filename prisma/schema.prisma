@@ -69,7 +69,7 @@ model orders {
 model orderItems {
   id       String          @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
   item_id  String          @db.Uuid
-  order_id String @unique
+  order_id String 
   quantity Int             @default(1)
 
   Order    orders          @relation(fields: [order_id], references: [order_id])

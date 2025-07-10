@@ -74,6 +74,13 @@ class ShopsRepository implements Ishops{
             }
         })
     }
+    async getItemThumbNails(item_id: string): Promise<thumb_nails[]> {
+        return await this.prisma.thumb_nails.findMany({
+            where:{
+                item_id
+            }
+        })
+    }
 }
 
 export default ShopsRepository

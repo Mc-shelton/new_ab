@@ -15,16 +15,16 @@ const createEvent = async (req: IRequest, res: Response) => {
     location,
     repeat,
     date,
-    base64
   } = req.body;
   if (
-    [title, image, description, organizer, location, repeat, base64, date].some(
+    [title, image, description, organizer, location, repeat, date].some(
       (v) => !v
     )
   )
     return res.status(400).json({ message: errorEnums.FIELDS });
 
   try {
+    req.body.date = new Date(req.body.date)
     const u = await eventsService.createEvent(req.body);
     res.status(200).json({ message: "event updated", data: u });
   } catch (err: any) {

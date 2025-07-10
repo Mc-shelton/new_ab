@@ -48,6 +48,7 @@ interface Ishops {
   createItem(item:items, thumb_nails?:thumb_nails[]):Promise<items>
   changeOrderStatus(orderId:string, status:orderItemStatus):Promise<orders | null>
   getUserOrders(userId:string):Promise<orders[]>
+  getItemThumbNails(item_id:string):Promise<thumb_nails[]>
 }
 interface Irooms{
   createRoom(room:rooms, owner_id?:string):Promise<rooms>

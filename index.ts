@@ -6,7 +6,7 @@ import appConfig from "./src/config.ts";
 import { prismaSetup } from "./src/startup/db";
 import { routerSetup } from "./src/startup/router";
 import { getUsersConsumer } from "./src/rabbitmq/consumers/example";
-import { userRepository } from "./src/handlers/repositories";
+import { shopsRepository, userRepository } from "./src/handlers/repositories";
 import https from 'https'
 import fs from 'fs'
 import { consumeMessageWithResponse } from "./src/rabbitmq";
@@ -35,4 +35,29 @@ server.listen(PORT, async () => {
   prismaSetup()
   logger.genLog('app listening on port', PORT, 'SERVER', 'LOG')
   const remoteFileName = path.basename('./2.png')
+
+
+  // shopsRepository.createItemThumbNails([
+  //   {
+  //     id:'',
+  //     item_id:'',
+  //     url:''
+  //   }
+  // ])
+
+  prismaClient.events.update({
+    where:{
+      id:"f8772e54-84ae-4a66-8fbe-5c487b608b44"
+    },
+    // data:{
+    //   description:"You're warmly invited to Street Vespers this Friday, July 11, 2025. Join us at 6:00 PM next to Stima House along Aga Khan Walk. Let's fellowship together and be uplifted through worship and the Word. “Let us not forsake meeting together…” — Hebrews 10:25."
+    // }
+    data:{
+      contact:"+2547 593 82912"
+    }
+  }).then(res=>{
+    console.log(res)
+  }).catch(err=>{
+    console.log(err)
+  })
 });
