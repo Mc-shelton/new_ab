@@ -5,6 +5,7 @@ const estateRoute = Router()
 
 estateRoute.get('/', estateController.getLessons)
 estateRoute.get('/quarterlies', estateController.getLessons)
+estateRoute.get('/pdf', estateController.getPdf)
 estateRoute.get('/quarterlies/books', estateController.getQuarterliesBooks)
 estateRoute.get('/egw', estateController.getEgwEstate)
 estateRoute.get('/egw/folder', estateController.getEgwFolder)

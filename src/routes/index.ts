@@ -9,6 +9,7 @@ import periodicalRouter from "./periodical.router";
 import shopsRouter from "./shops.routes";
 import roomsRouter from "./rooms.routes";
 import estateRoute from "./estate.routes";
+import staticRoutes from "./static.routes";
 const apiv1 = express.Router();
 
 apiv1.use(
@@ -22,9 +23,9 @@ apiv1.use(
       res.setHeader("Content-Type", "image/png"); // Adjust the content type based on your image type
       res.setHeader("Cache-Control", "public, max-age=31536000"); // Adjust caching settings as needed
     },
-  })
+  }) 
 );
-
+apiv1.use("/static", staticRoutes)
 apiv1.use("/estate", estateRoute);
 apiv1.use("/accounts", accountsRouter);
 apiv1.use("/basicAuth", basicAuthRoutes);

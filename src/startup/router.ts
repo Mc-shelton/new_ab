@@ -8,6 +8,7 @@ import helmet from "helmet"
 import authenticate from "../handlers/middlewares/auth"
 import accessControl from "../handlers/middlewares/actl"
 import appConfig from "../config.ts"
+import { estateController } from "../handlers/controllers"
 const logger = new Logger('router setup')
 
 export const routerSetup=(app:Application)=>{

@@ -7,6 +7,7 @@ import authLayer from "../../services_layer/auth/auth";
 
 const logger = new Logger("auth middleware")
 const authenticate = async (req: IRequest, res: Response, next: NextFunction) => {
+  if(req.url.includes('static')) return next()
   const bearer = req.headers.authorization;
   const auth_key = req.headers["x-api-key"];
   console.log(req.url)
