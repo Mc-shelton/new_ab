@@ -88,6 +88,14 @@ class UserService implements IuserService {
   async signInSso(user: any): Promise<users | null> {
     return await this.userRepo.getUser({ email: "email", phone: "phone" });
   }
+
+  async postUserActivity(
+    userId: string,
+    activity: string,
+    timeStamp: Date
+  ): Promise<void> {
+    return await this.userRepo.postUserActivity(userId, activity, timeStamp);
+  }
 }
 
 export default UserService;

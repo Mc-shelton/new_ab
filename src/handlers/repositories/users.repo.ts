@@ -108,6 +108,16 @@ class UserRepository implements IuserInterface {
     })
   }
 
+  async postUserActivity(userId: string, activity: string, timeStamp:Date): Promise<void> {
+    await this.prisma.user_activities.create({
+      data: {
+        user_id: userId,
+        activity,
+        timeStamp: timeStamp
+      }
+    });
+  }
+
 }
 
 export default UserRepository;

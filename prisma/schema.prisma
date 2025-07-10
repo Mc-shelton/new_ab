@@ -22,9 +22,18 @@ model users{
   UserRoom userRooms[]
   Chats chats[]
   Orders orders[]
+  Activities user_activities[]
   created_at     DateTime     @default(now())
 }
 
+model user_activities{
+  id          String        @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  user_id String @db.Uuid
+  activity String
+  timeStamp DateTime
+
+  User users @relation(fields:[user_id], references:[id])
+}
 model items {
   id          String        @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
   name        String @unique
@@ -156,6 +165,7 @@ model userRooms{
   Room rooms @relation(fields:[room_id], references:[id])
   User users @relation(fields:[user_id], references:[id])
 }
+
 model chats{
   id       String          @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
   message String
@@ -165,7 +175,6 @@ model chats{
 
   Room rooms @relation(fields:[room_id], references:[id])
   Sender users @relation(fields:[sender_id],references:[id])
-
   created_at DateTime @default(now())
 }
 

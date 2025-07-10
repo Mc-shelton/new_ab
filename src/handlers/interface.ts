@@ -36,6 +36,7 @@ interface IuserInterface {
   lockAccount(id:string, actor:string):Promise<users | null>
   searchUser(user?:userUpdate):Promise<users[]>
   filterUser(user?:userUpdate):Promise<users[]>
+  postUserActivity(userId:string, activity:string, timeStamp:Date):Promise<void>
 }
 interface IEvents{
   createEvent(event:cevent, base64?:string):Promise<events>

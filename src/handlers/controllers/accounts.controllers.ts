@@ -151,4 +151,19 @@ const signInUser = async (req: IRequest, res: Response) => {
   }
 };
 
-export { filterUserSearch, searchUser,signInUser, getUser, lockAccount, updatePassword, createUser, updateUser, };
+const postUserActivity = async (req: IRequest, res: Response) => {
+  const {userId, timeStamp, activity } = req.body;
+  if (!userId || !timeStamp || !activity)
+    return res.status(400).json({ message: errorEnums.FIELDS }); 
+  try {
+     await userService.postUserActivity(userId, activity, timeStamp);
+    res.status(200).json({ message: 'logged user activity'});
+  } catch (error: any) {
+    const err = customErrorChecker(error);
+    if (err) return res.status(400).json({ message: error.message });
+    res.status(500).json({ message: errorEnums.SERVER });
+    logger.genError(error.message);
+  }
+}
+
+export { filterUserSearch, postUserActivity, searchUser,signInUser, getUser, lockAccount, updatePassword, createUser, updateUser, };

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 // process.env.RAILWAY_ENVIRONMENT == 'production'? dotenv.config({path:'.env'}) : dotenv.config({path:'.env.development'})
-console.log(process.env)
+// console.log(process.env)
 
 
 const config = (envString:string):string=>{

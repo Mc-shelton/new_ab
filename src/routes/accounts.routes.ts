@@ -10,5 +10,6 @@ accountsRouter.get("/user", accountsController.getUser)
 accountsRouter.put("/user/password", accountsController.updatePassword)
 accountsRouter.post("/user/edit",  accountsController.updateUser)
 accountsRouter.get("/user/search", accountsController.searchUser)
+accountsRouter.post("/user/activity", accountsController.searchUser)
 
 export default accountsRouter;

@@ -22,9 +22,6 @@ class RoomsRepository implements Irooms {
   }
   async getRoomChats(room_id: string): Promise<chats[]> {
       return await this.prisma.chats.findMany({
-        where:{
-            room_id
-        },
         orderBy:{
             created_at: 'asc'
         }
