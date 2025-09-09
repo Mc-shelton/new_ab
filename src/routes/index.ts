@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import path from "path";
 import accountsRouter from "./accounts.routes";
-import { oAuthCtonroller } from "../handlers/controllers";
+// import { oAuthCtonroller } from "../handlers/controllers";
 import oAuthRouter from "./oath.routes";
 import basicAuthRoutes from "./basic.routes";
 import eventsRouter from "./events.routes";

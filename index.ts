@@ -45,19 +45,21 @@ server.listen(PORT, async () => {
   //   }
   // ])
 
-  prismaClient.events.update({
+  prismaClient.chats.deleteMany({
     where:{
-      id:"f8772e54-84ae-4a66-8fbe-5c487b608b44"
+      // room_id:"9d9ac46b-5d00-461e-ae19-0e59daee1184"
     },
     // data:{
     //   description:"You're warmly invited to Street Vespers this Friday, July 11, 2025. Join us at 6:00 PM next to Stima House along Aga Khan Walk. Let's fellowship together and be uplifted through worship and the Word. “Let us not forsake meeting together…” — Hebrews 10:25."
     // }
-    data:{
-      contact:"+2547 593 82912"
-    }
+    // data:{
+    //   contact:"+2547 593 82912"
+    // }
   }).then(res=>{
     console.log(res)
   }).catch(err=>{
     console.log(err)
   })
 });
+
+

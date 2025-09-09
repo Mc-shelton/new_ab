@@ -178,6 +178,67 @@ model chats{
   created_at DateTime @default(now())
 }
 
+// Multitenancy: Ministries (tenants)
+model ministries {
+  id       String          @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  name              String
+  slug              String           @unique
+  logo_url           String?
+  primary_color      String           @default("#191970")
+  secondary_color    String?           @default("#B0C4DE")
+  manager_password_hash String?
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @default(now())
+
+  prayerRequests    prayer_requests[]
+  testimonies       testimonies[]
+}
+
+// Prayer Requests
+model prayer_requests {
+  id       String          @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  title            String
+  request          String
+  name             String      @default("Anonymous")
+  is_anonymous      Boolean     @default(true)
+  is_being_prayed_for Boolean     @default(false)
+  is_ministry_focus  Boolean     @default(false)
+  created_at        DateTime    @default(now())
+  updated_at        DateTime    @default(now())
+
+  ministry_id       String? @db.Uuid
+  ministry         ministries?    @relation(fields: [ministry_id], references: [id], onDelete: Cascade)
+
+  testimonies      testimonies[]
+  prayerActions    prayer_actions[]
+}
+
+// Testimonies
+model testimonies {
+  id       String          @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  content          String
+  name             String      @default("Anonymous")
+  is_anonymous      Boolean     @default(true)
+  created_at        DateTime    @default(now())
+  updated_at        DateTime    @default(now())
+
+  prayer_request_id  String? @db.Uuid
+  prayerRequest    prayer_requests? @relation(fields: [prayer_request_id], references: [id], onDelete: SetNull)
+
+  ministry_id       String? @db.Uuid
+  ministry         ministries?    @relation(fields: [ministry_id], references: [id], onDelete: Cascade)
+}
+
+// Prayer Actions (track who prayed for what)
+model prayer_actions {
+  id       String          @id @default(dbgenerated("public.uuid_generate_v4()")) @db.Uuid
+  prayed_at        DateTime       @default(now())
+  session_id       String?
+
+  prayer_request_id String? @db.Uuid
+  prayerRequest   prayer_requests?  @relation(fields: [prayer_request_id], references: [id], onDelete: Cascade)
+}
+
 
 enum transactionStatus {
   FAILED

@@ -1,8 +1,8 @@
 import os from 'os'
-import appConfig from '../config.ts';
+import appConfig from '../config.ts/index.js';
 import axios, { AxiosError } from 'axios';
-import { decrypt, hashChallenge } from '../encryption';
-import Logger from './logger';
+import { decrypt, hashChallenge } from '../encryption/index.js';
+import Logger from './logger.js';
 
 const logger = new Logger('register ip')
 async function registerServer(count?:number) {

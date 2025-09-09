@@ -1,5 +1,5 @@
 import { OAuth2Client } from "google-auth-library";
-import appConfig from "../../config.ts";
+import appConfig from "../../config.ts/index.js";
 
 const oAuth2Client = new OAuth2Client(
     'appConfig.google.CLIENT_ID',
