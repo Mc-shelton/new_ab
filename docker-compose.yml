@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: mcsheltonomondi/new_service:latest
+    restart: always
+    ports:
+      - "3122:3122"
+    networks:
+      - app_network
+    volumes:
+      - ./assets/files:/app/assets/files
+    environment:
+      - NODE_ENV=production
+networks:
+  app_network:
+    driver: bridge

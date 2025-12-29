@@ -35,7 +35,7 @@ async function registerServer(count?:number) {
     if(res.status === 201 && res.data.message === 'www challenge'){
       //combat challenge
       let challenge_cypher = res.headers['www-auth-challenge']
-      let challenge = decrypt(challenge_cypher)
+      let challenge = decrypt(challenge_cypher) as any
       let split_challenge = challenge.split("|")
       let challenge_Date = split_challenge[0].trim()
       let challenge_hex = split_challenge[1].trim()
