@@ -28,14 +28,14 @@ const sslCrt = fs.readFileSync("./ssl/certificate.pem");
 routerSetup(app);
 logger.unCought();
 
-// const server = http.createServer(app)
-const server = https.createServer(
-  {
-    key: sslKey,
-    cert: sslCrt,
-  },
-  app
-);
+const server = http.createServer(app)
+// const server = https.createServer(
+//   {
+//     key: sslKey,
+//     cert: sslCrt,
+//   },
+//   app
+// );
 
 socketSetup(server);
 // logger.unCought()
