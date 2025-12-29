@@ -101,7 +101,7 @@ server.listen(PORT, async () => {
       inStore: 50,
     },
   ];
-
+  // just something to commit
   // prismaClient.items.createMany({ data: items}).then(res=>{
   //   logger.genLog('items added to shops')
   // }).catch(err=>{
